@@ -2,4 +2,3 @@ nodemon.json
 /images
 node_modules
 .env
-Procfile
