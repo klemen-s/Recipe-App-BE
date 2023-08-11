@@ -39,20 +39,20 @@ app.use(bodyParser.json());
 const upload = multer({
   storage: multerS3({
     s3: s3,
-    bucket: process.env.BUCKET_NAME,
+    bucket: "express-app-recipe",
     metadata: function (req, file, cb) {
       cb(null, { fieldName: file.fieldname });
     },
     key: function (req, file, cb) {
-      cb(null, uuidv4())
-    }
+      cb(null, uuidv4());
+    },
   }),
 });
 
 app.use(
   "/images/",
   s3Proxy({
-    bucket: process.env.BUCKET_NAME,
+    bucket: "express-app-recipe",
     accessKeyId: process.env.AWS_ACCESS_KEY_ID,
     secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
     sessionToken: process.env.AWS_SESSION_TOKEN,
