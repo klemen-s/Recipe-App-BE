@@ -3,7 +3,6 @@ require("dotenv").config();
 
 const { S3Client } = require("@aws-sdk/client-s3");
 const multerS3 = require("multer-s3");
-const  AWS = require("aws-sdk")
 
 const express = require("express");
 const mongoose = require("mongoose");
@@ -24,7 +23,6 @@ const s3 = new S3Client({
   credentials: {
     accessKeyId: process.env.AWS_ACCESS_KEY_ID,
     secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-    sessionToken: process.env.AWS_SESSION_TOKEN,
   },
   region: "eu-central-1",
 });
@@ -55,7 +53,6 @@ app.use(
     bucket: "express-app-recipe",
     accessKeyId: process.env.AWS_ACCESS_KEY_ID,
     secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-    sessionToken: process.env.AWS_SESSION_TOKEN,
   })
 );
 
